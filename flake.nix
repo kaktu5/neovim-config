@@ -2,7 +2,7 @@
   inputs = {
     systems.url = "github:nix-systems/default";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nvf.url = "github:notashelf/nvf";
+    nvf.url = "github:notashelf/nvf/v0.8";
 
     statix = {
       url = "github:oppiliappan/statix?rev=0f372c9c8f2981961c88dc1498b6f4d27696bdca";

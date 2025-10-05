@@ -18,7 +18,7 @@ _: {
     };
     nix = {
       enable = true;
-      lsp.server = "nixd";
+      lsp.servers = ["nixd"];
     };
     ocaml.enable = true;
     rust = {
