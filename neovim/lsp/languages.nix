@@ -21,6 +21,7 @@ _: {
       lsp.servers = ["nixd"];
     };
     ocaml.enable = true;
+    qml.enable = true;
     rust = {
       enable = true;
       crates.enable = true;
