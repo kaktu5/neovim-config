@@ -12,6 +12,19 @@
       "revision": "0dc4bc2b3fc763420793e748b672292bc43ee722",
       "url": "https://github.com/nvimdev/indentmini.nvim/archive/0dc4bc2b3fc763420793e748b672292bc43ee722.tar.gz",
       "hash": "1n8vb7wgkb81x9zqhmsdrl2ilx40l4r6jg9qnmd3ihbfwbsjgi48"
+    },
+    "jj-nvim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nicolasgb",
+        "repo": "jj.nvim"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "fb43a3f33da89a7fba6328b8b4a4852c85f2fb3d",
+      "url": "https://github.com/nicolasgb/jj.nvim/archive/fb43a3f33da89a7fba6328b8b4a4852c85f2fb3d.tar.gz",
+      "hash": "0r7pk04d7n6b100c84pzxyj4jidzwh7ynwmb6pyxnkdil139h9la"
     }
   },
   "version": 5
