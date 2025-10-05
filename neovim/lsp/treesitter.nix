@@ -8,7 +8,6 @@ in {
     ron
     toml
     vim
-    wgsl-bevy
     xml
     yaml
   ];
