@@ -12,7 +12,7 @@ _: {
 
     wrap = false;
 
-    virtualedit = "block";
+    virtualedit = "block,onemore";
 
     swapfile = false;
     backup = false;
