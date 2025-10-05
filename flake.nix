@@ -14,7 +14,7 @@
   };
 
   outputs = {self, ...} @ inputs: let
-    lib = inputs.nixpkgs.lib.fix (self:
+    lib = inputs.nixpkgs.lib.fixedPoints.fix (self:
       inputs.nixpkgs.lib
       // inputs.nvf.lib
       // import ./lib.nix {lib = self;});
