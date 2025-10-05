@@ -3,6 +3,14 @@
     systems.url = "github:nix-systems/default";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nvf.url = "github:notashelf/nvf";
+
+    statix = {
+      url = "github:oppiliappan/statix?rev=0f372c9c8f2981961c88dc1498b6f4d27696bdca";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
   };
 
   outputs = {self, ...} @ inputs: let
@@ -46,11 +54,16 @@
 
       formatter = pkgs.writeShellApplication {
         name = "fmt";
-        runtimeInputs = with pkgs; [alejandra fd mdformat stylua];
+        # statix > 0.5.8
+        # runtimeInputs = with pkgs; [alejandra deadnix fd mdformat statix];
+        runtimeInputs =
+          (with pkgs; [alejandra deadnix fd mdformat])
+          ++ [(inputs.statix.packages.${system}.statix.overrideAttrs (_: {RUSTFLAGS = null;}))];
         text = ''
-          fd "$@" -t f -e lua -X stylua '{}'
           fd "$@" -t f -e md -X mdformat '{}'
-          fd "$@" -t f -e nix -E npins/ -X alejandra '{}'
+          fd "$@" -t f -e nix -E npins/ -X alejandra --quiet '{}'
+          fd "$@" -t f -e nix -E npins/ -X deadnix --fail '{}'
+          fd "$@" -t f -e nix -E npins/ -x statix check '{}'
         '';
       };
     });
