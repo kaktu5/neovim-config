@@ -1,6 +1,3 @@
 _: {
-  vim.lsp = {
-    enable = true;
-    formatOnSave = true;
-  };
+  vim.lsp.enable = true;
 }
