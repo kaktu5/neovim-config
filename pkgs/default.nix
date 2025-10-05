@@ -7,7 +7,7 @@
   inherit (pkgs.lib.attrsets) attrNames listToAttrs;
   inherit (pkgs.lib.lists) filter map;
   inherit (pkgs.lib.strings) removeSuffix;
-in (
+in
   readDir ./.
   |> attrNames
   |> (filter (file: file != "default.nix"))
@@ -16,4 +16,3 @@ in (
     value = callPackage ./${file} {inherit sources;};
   }))
   |> listToAttrs
-)
