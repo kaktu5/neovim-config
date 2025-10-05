@@ -19,7 +19,6 @@ _: {
     nix = {
       enable = true;
       lsp.server = "nixd";
-      extraDiagnostics.enable = false;
     };
     ocaml.enable = true;
     rust = {
