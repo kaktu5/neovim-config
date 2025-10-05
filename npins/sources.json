@@ -1,0 +1,18 @@
+{
+  "pins": {
+    "indentmini-nvim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nvimdev",
+        "repo": "indentmini.nvim"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "0dc4bc2b3fc763420793e748b672292bc43ee722",
+      "url": "https://github.com/nvimdev/indentmini.nvim/archive/0dc4bc2b3fc763420793e748b672292bc43ee722.tar.gz",
+      "hash": "1n8vb7wgkb81x9zqhmsdrl2ilx40l4r6jg9qnmd3ihbfwbsjgi48"
+    }
+  },
+  "version": 5
+}

@@ -1,0 +1,15 @@
+*
+!neovim/
+!neovim/**
+!npins/
+!npins/**
+!pkgs/
+!pkgs/**
+!.editorconfig
+!.envrc
+!.gitignore
+!flake.lock
+!flake.nix
+!lib.nix
+!license
+!readme.md
