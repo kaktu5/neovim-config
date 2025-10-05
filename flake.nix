@@ -23,10 +23,14 @@
       outputNames = systemOutputs |> lib.attrsets.attrValues |> lib.lists.head |> lib.attrsets.attrNames;
     in
       lib.attrsets.genAttrs outputNames (outputName:
-        lib.attrsets.mapAttrs (_: attrs: attrs.${outputName}) systemOutputs);
+        systemOutputs |> lib.attrsets.mapAttrs (_: attrs: attrs.${outputName}));
   in
     forEachSystem (import inputs.systems) (system: let
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
+      # statix > 0.5.8
+      # pkgs = inputs.nixpkgs.legacyPackages.${system};
+      pkgs = inputs.nixpkgs.legacyPackages.${system}.extend (_: _: {
+        statix = inputs.statix.packages.${system}.default.overrideAttrs (_: {RUSTFLAGS = null;});
+      });
     in {
       packages =
         (import ./pkgs {
@@ -54,11 +58,7 @@
 
       formatter = pkgs.writeShellApplication {
         name = "fmt";
-        # statix > 0.5.8
-        # runtimeInputs = with pkgs; [alejandra deadnix fd mdformat statix];
-        runtimeInputs =
-          (with pkgs; [alejandra deadnix fd mdformat])
-          ++ [(inputs.statix.packages.${system}.statix.overrideAttrs (_: {RUSTFLAGS = null;}))];
+        runtimeInputs = with pkgs; [alejandra deadnix fd mdformat statix];
         text = ''
           fd "$@" -t f -e md -X mdformat '{}'
           fd "$@" -t f -e nix -E npins/ -X alejandra --quiet '{}'
