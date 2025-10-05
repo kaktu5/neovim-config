@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "0dc4bc2b3fc763420793e748b672292bc43ee722",
-      "url": "https://github.com/nvimdev/indentmini.nvim/archive/0dc4bc2b3fc763420793e748b672292bc43ee722.tar.gz",
-      "hash": "1n8vb7wgkb81x9zqhmsdrl2ilx40l4r6jg9qnmd3ihbfwbsjgi48"
+      "revision": "e0f1e381a3949ea6757365fa33f8f1722d3eae90",
+      "url": "https://github.com/nvimdev/indentmini.nvim/archive/e0f1e381a3949ea6757365fa33f8f1722d3eae90.tar.gz",
+      "hash": "02shv94mfx99gn6xhhq57z4fzdpxs1547qkhyk4kd4yf8brbhcv0"
     },
     "jj-nvim": {
       "type": "Git",
