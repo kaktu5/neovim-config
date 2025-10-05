@@ -2,8 +2,6 @@
   inputs = {
     systems.url = "github:nix-systems/default";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     nvf.url = "github:notashelf/nvf";
   };
 
