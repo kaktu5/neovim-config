@@ -53,7 +53,7 @@
         };
 
       devShells.default = pkgs.mkShell {
-        packages = with pkgs; [nixd npins];
+        packages = with pkgs; [deadnix nixd npins statix];
       };
 
       formatter = pkgs.writeShellApplication {
