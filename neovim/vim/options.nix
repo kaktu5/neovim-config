@@ -1,25 +1,31 @@
 _: {
-  vim.options = {
-    relativenumber = true;
+  vim = {
+    enableLuaLoader = true;
 
-    expandtab = true;
-    tabstop = 2;
-    shiftwidth = 0;
-    softtabstop = -1;
+    lineNumberMode = "relative";
 
-    scrolloff = 8;
-    sidescrolloff = 8;
+    undoFile.enable = false;
 
-    wrap = false;
+    clipboard = {
+      enable = true;
+      providers.wl-copy.enable = true;
+      registers = "unnamedplus";
+    };
 
-    virtualedit = "block,onemore";
+    options = {
+      expandtab = true;
+      tabstop = 2;
+      shiftwidth = 0;
+      softtabstop = -1;
 
-    swapfile = false;
-    backup = false;
-    undofile = true;
+      scrolloff = 8;
+      sidescrolloff = 8;
 
-    clipboard = "unnamedplus";
+      wrap = false;
 
-    termguicolors = true;
+      virtualedit = "block,onemore";
+
+      termguicolors = true;
+    };
   };
 }
