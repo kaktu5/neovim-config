@@ -18,7 +18,7 @@ _: {
     };
     nix = {
       enable = true;
-      lsp.servers = ["nixd"];
+      lsp.servers = ["nil" "nixd"];
     };
     ocaml.enable = true;
     qml.enable = true;
