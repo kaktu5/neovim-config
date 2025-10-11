@@ -12,6 +12,10 @@ _: {
     };
     haskell.enable = true;
     html.enable = true;
+    lua = {
+      enable = true;
+      lsp.lazydev.enable = true;
+    };
     markdown = {
       enable = true;
       format.type = "prettierd";
