@@ -4,14 +4,14 @@
       "type": "Git",
       "repository": {
         "type": "GitHub",
-        "owner": "nvimdev",
+        "owner": "kaktu5",
         "repo": "indentmini.nvim"
       },
       "branch": "main",
       "submodules": false,
-      "revision": "e0f1e381a3949ea6757365fa33f8f1722d3eae90",
-      "url": "https://github.com/nvimdev/indentmini.nvim/archive/e0f1e381a3949ea6757365fa33f8f1722d3eae90.tar.gz",
-      "hash": "02shv94mfx99gn6xhhq57z4fzdpxs1547qkhyk4kd4yf8brbhcv0"
+      "revision": "ccae2b46ec2a399dec77779dd101ebe3a75adf51",
+      "url": "https://github.com/kaktu5/indentmini.nvim/archive/ccae2b46ec2a399dec77779dd101ebe3a75adf51.tar.gz",
+      "hash": "0rxbzkjr9ai2ymnkdgsya478c2nr6841qn28yy7kdqvn6hd70xyp"
     },
     "jj-nvim": {
       "type": "Git",

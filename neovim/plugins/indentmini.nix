@@ -12,7 +12,7 @@ in {
   vim = {
     extraPlugins.indentmini-nvim = {
       package = flake.packages.${system}.indentmini-nvim;
-      setup = setup "indentmini" {};
+      setup = setup "indentmini" {skip_cursor = true;};
     };
 
     highlight = {
