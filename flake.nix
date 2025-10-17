@@ -13,22 +13,26 @@
     };
   };
 
-  outputs = {self, ...} @ inputs: let
-    lib = inputs.nixpkgs.lib.fixedPoints.fix (self:
-      inputs.nixpkgs.lib
-      // inputs.nvf.lib
+  outputs = {
+    self,
+    systems,
+    nixpkgs,
+    nvf,
+    ...
+  } @ inputs: let
+    lib = nixpkgs.lib.fixedPoints.fix (self:
+      nixpkgs.lib
+      // nvf.lib
       // import ./lib.nix {lib = self;});
-    forEachSystem = systems: f: let
-      systemOutputs = lib.attrsets.genAttrs systems f;
-      outputNames = systemOutputs |> lib.attrsets.attrValues |> lib.lists.head |> lib.attrsets.attrNames;
-    in
-      lib.attrsets.genAttrs outputNames (outputName:
-        systemOutputs |> lib.attrsets.mapAttrs (_: attrs: attrs.${outputName}));
+    forEachSystem = systems: f: (lib.lists.foldl' (acc: system: (f system
+      |> lib.attrsets.mapAttrs (_: value: {${system} = value;})
+      |> lib.attrsets.recursiveUpdate acc)) {}
+    systems);
   in
-    forEachSystem (import inputs.systems) (system: let
+    forEachSystem (import systems) (system: let
       # statix > 0.5.8
-      # pkgs = inputs.nixpkgs.legacyPackages.${system};
-      pkgs = inputs.nixpkgs.legacyPackages.${system}.extend (_: _: {
+      # pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = nixpkgs.legacyPackages.${system}.extend (_: _: {
         statix = inputs.statix.packages.${system}.default.overrideAttrs (_: {RUSTFLAGS = null;});
       });
     in {
@@ -53,12 +57,16 @@
         };
 
       devShells.default = pkgs.mkShellNoCC {
-        packages = with pkgs; [deadnix nixd npins statix];
+        packages = lib.attrsets.attrValues {
+          inherit (pkgs) deadnix nil nixd npins statix;
+        };
       };
 
       formatter = pkgs.writeShellApplication {
         name = "fmt";
-        runtimeInputs = with pkgs; [alejandra deadnix fd mdformat statix];
+        runtimeInputs = lib.attrsets.attrValues {
+          inherit (pkgs) alejandra deadnix fd mdformat statix;
+        };
         text = ''
           fd "$@" -t f -e md -X mdformat '{}'
           fd "$@" -t f -e nix -E npins/ -X alejandra --quiet '{}'

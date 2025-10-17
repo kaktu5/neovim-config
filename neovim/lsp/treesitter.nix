@@ -1,14 +1,19 @@
-{pkgs, ...}: let
-  inherit (pkgs.vimPlugins.nvim-treesitter) builtGrammars;
-in {
-  vim.treesitter.grammars = with builtGrammars; [
-    asm
-    bash
-    linkerscript
-    ron
-    toml
-    vim
-    xml
-    yaml
-  ];
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  vim.treesitter.grammars = lib.attrsets.attrValues {
+    inherit
+      (pkgs.vimPlugins.nvim-treesitter.builtGrammars)
+      asm
+      bash
+      linkerscript
+      ron
+      toml
+      vim
+      xml
+      yaml
+      ;
+  };
 }

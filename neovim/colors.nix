@@ -41,15 +41,15 @@ in {
     term7 = mkOption {type = str;};
   };
 
-  config.kkts.colors = with colors; {
-    termBg = mkDefault bg0;
-    term0 = mkDefault bg3;
-    term1 = mkDefault red;
-    term2 = mkDefault green;
-    term3 = mkDefault yellow;
-    term4 = mkDefault blue;
-    term5 = mkDefault purple;
-    term6 = mkDefault cyan;
-    term7 = mkDefault fg0;
+  config.kkts.colors = {
+    termBg = mkDefault colors.bg0;
+    term0 = mkDefault colors.bg3;
+    term1 = mkDefault colors.red;
+    term2 = mkDefault colors.green;
+    term3 = mkDefault colors.yellow;
+    term4 = mkDefault colors.blue;
+    term5 = mkDefault colors.purple;
+    term6 = mkDefault colors.cyan;
+    term7 = mkDefault colors.fg0;
   };
 }

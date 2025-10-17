@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  inherit (pkgs) vimPlugins;
+in {
   vim = {
     mini.trailspace.enable = true;
 
@@ -9,9 +11,9 @@
 
     visuals.nvim-web-devicons.enable = true;
 
-    extraPlugins = with pkgs.vimPlugins; {
-      vim-sort-motion.package = vim-sort-motion;
-      vim-tmux-navigator.package = vim-tmux-navigator;
+    extraPlugins = {
+      vim-sort-motion.package = vimPlugins.vim-sort-motion;
+      vim-tmux-navigator.package = vimPlugins.vim-tmux-navigator;
     };
   };
 }

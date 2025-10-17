@@ -23,7 +23,7 @@ _: {
 
       wrap = false;
 
-      virtualedit = "block,onemore";
+      virtualedit = "block";
 
       termguicolors = true;
     };
