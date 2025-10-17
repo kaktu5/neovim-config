@@ -34,5 +34,6 @@ _: {
       enable = true;
       format.type = "typstyle";
     };
+    zig.enable = true;
   };
 }
