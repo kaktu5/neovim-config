@@ -2,15 +2,8 @@
   inputs = {
     systems.url = "github:nix-systems/default";
     nixpkgs.follows = "nvf/nixpkgs";
-    nvf.url = "github:notashelf/nvf/v0.8";
-
-    statix = {
-      url = "github:oppiliappan/statix?rev=0f372c9c8f2981961c88dc1498b6f4d27696bdca";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
+    nvf.url = "github:notashelf/nvf";
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = {
@@ -18,24 +11,34 @@
     systems,
     nixpkgs,
     nvf,
-    ...
-  } @ inputs: let
-    lib = nixpkgs.lib.fixedPoints.fix (self:
-      nixpkgs.lib
-      // nvf.lib
-      // import ./lib.nix {lib = self;});
-    forEachSystem = systems: f: (lib.lists.foldl' (acc: system: (f system
-      |> lib.attrsets.mapAttrs (_: value: {${system} = value;})
-      |> lib.attrsets.recursiveUpdate acc)) {}
+    neovim-nightly,
+  }: let
+    inherit (nixpkgs.lib.attrsets) mapAttrs recursiveUpdate;
+    inherit (nixpkgs.lib.fixedPoints) fix;
+    inherit (nixpkgs.lib.lists) foldl';
+
+    mapSystems = systems: f: (foldl' (acc: system: (f system
+      |> mapAttrs (_: value: {${system} = value;})
+      |> recursiveUpdate acc)) {}
     systems);
+
+    lib = fix (self: nixpkgs.lib // nvf.lib // import ./lib.nix {lib = self;});
+    sources = import ./npins;
   in
-    forEachSystem (import systems) (system: let
-      # statix > 0.5.8
-      # pkgs = nixpkgs.legacyPackages.${system};
-      pkgs = nixpkgs.legacyPackages.${system}.extend (_: _: {
-        statix = inputs.statix.packages.${system}.default.overrideAttrs (_: {RUSTFLAGS = null;});
-      });
+    mapSystems (import systems) (system: let
+      pkgs = let
+        pkgs = nixpkgs.legacyPackages.${system};
+        flake-compat = import sources.flake-compat;
+        statix = (flake-compat {src = sources.statix;}).defaultNix.packages.${system}.default;
+      in
+        (pkgs
+          .extend (_: _: {inherit statix;}))
+          .extend neovim-nightly.overlays.default;
+      import' = path: import path {inherit lib pkgs self system;};
     in {
+      devShells.default = import' ./internal/devshell.nix;
+      formatter = import' ./internal/formatter.nix;
+
       packages =
         (import ./pkgs {
           inherit pkgs;
@@ -55,24 +58,5 @@
             ;
           default = self.packages.${system}.neovim;
         };
-
-      devShells.default = pkgs.mkShellNoCC {
-        packages = lib.attrsets.attrValues {
-          inherit (pkgs) deadnix nil nixd npins statix;
-        };
-      };
-
-      formatter = pkgs.writeShellApplication {
-        name = "fmt";
-        runtimeInputs = lib.attrsets.attrValues {
-          inherit (pkgs) alejandra deadnix fd mdformat statix;
-        };
-        text = ''
-          fd "$@" -t f -e md -X mdformat '{}'
-          fd "$@" -t f -e nix -E npins/ -X alejandra --quiet '{}'
-          fd "$@" -t f -e nix -E npins/ -X deadnix --fail '{}'
-          fd "$@" -t f -e nix -E npins/ -x statix check '{}'
-        '';
-      };
     });
 }

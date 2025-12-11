@@ -1,6 +1,7 @@
 {lib, ...}: let
   inherit (lib.modules) mkForce;
 in {
+  /*
   vim.lsp.servers = {
     clangd.cmd = mkForce ["clangd"];
     cssls.cmd = mkForce ["vscode-css-language-server" "--stdio"];
@@ -15,11 +16,12 @@ in {
     ts_ls.cmd = mkForce ["typescript-language-server" "--stdio"];
     tinymist.cmd = mkForce ["tinymist"];
   };
+  */
 
   vim.languages = {
-    # enableDAP = true;
-    # enableExtraDiagnostics = true;
-    # enableFormat = true;
+    enableDAP = true;
+    enableExtraDiagnostics = true;
+    enableFormat = true;
     enableTreesitter = true;
 
     clang.enable = true;
@@ -54,5 +56,6 @@ in {
       format.type = "typstyle";
     };
     zig.enable = true;
+    cue.enable = true;
   };
 }

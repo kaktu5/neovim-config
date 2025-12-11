@@ -1,4 +1,6 @@
 *
+!internal/
+!internal/**
 !neovim/
 !neovim/**
 !npins/

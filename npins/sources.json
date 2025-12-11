@@ -1,5 +1,21 @@
 {
   "pins": {
+    "flake-compat": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nixos",
+        "repo": "flake-compat"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v1.1.0",
+      "revision": "ff81ac966bb2cae68946d5ed5fc4994f96d0ffec",
+      "url": "https://api.github.com/repos/nixos/flake-compat/tarball/v1.1.0",
+      "hash": "19d2z6xsvpxm184m41qrpi1bplilwipgnzv9jy17fgw421785q1m"
+    },
     "indentmini-nvim": {
       "type": "Git",
       "repository": {
@@ -9,9 +25,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "ccae2b46ec2a399dec77779dd101ebe3a75adf51",
-      "url": "https://github.com/kaktu5/indentmini.nvim/archive/ccae2b46ec2a399dec77779dd101ebe3a75adf51.tar.gz",
-      "hash": "0rxbzkjr9ai2ymnkdgsya478c2nr6841qn28yy7kdqvn6hd70xyp"
+      "revision": "c9464d999ab124f1d89f8ba181842463368bba0c",
+      "url": "https://github.com/kaktu5/indentmini.nvim/archive/c9464d999ab124f1d89f8ba181842463368bba0c.tar.gz",
+      "hash": "0bknkc0j0vz1ny349zqqi42jclsdxqnhpy1apiyamg811acnyb68"
     },
     "jj-nvim": {
       "type": "Git",
@@ -22,9 +38,22 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "fb43a3f33da89a7fba6328b8b4a4852c85f2fb3d",
-      "url": "https://github.com/nicolasgb/jj.nvim/archive/fb43a3f33da89a7fba6328b8b4a4852c85f2fb3d.tar.gz",
-      "hash": "0r7pk04d7n6b100c84pzxyj4jidzwh7ynwmb6pyxnkdil139h9la"
+      "revision": "43b5a817712b35e2e412f5c53b1cd56800d7aa91",
+      "url": "https://github.com/nicolasgb/jj.nvim/archive/43b5a817712b35e2e412f5c53b1cd56800d7aa91.tar.gz",
+      "hash": "0lmz3yzhl5j1r7r1pmym38zl2r1sfqc0zzsddagqb62xpz3yrdpx"
+    },
+    "statix": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "kaktu5",
+        "repo": "statix"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "c4d4719823814a2ecc331cd304ca99796f5c9328",
+      "url": "https://github.com/kaktu5/statix/archive/c4d4719823814a2ecc331cd304ca99796f5c9328.tar.gz",
+      "hash": "0h71zkl9ifpdc8h7vzrknx4214mck2da31297nm90k6nd2dzxdzv"
     }
   },
   "version": 5
