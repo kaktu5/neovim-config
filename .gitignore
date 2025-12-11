@@ -5,7 +5,6 @@
 !npins/**
 !pkgs/
 !pkgs/**
-!.editorconfig
 !.envrc
 !.gitignore
 !flake.lock
