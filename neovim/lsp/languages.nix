@@ -57,5 +57,6 @@ in {
     };
     zig.enable = true;
     cue.enable = true;
+    python.enable = true;
   };
 }
