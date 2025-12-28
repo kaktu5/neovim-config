@@ -1,20 +1,17 @@
 {
   "pins": {
     "flake-compat": {
-      "type": "GitRelease",
+      "type": "Git",
       "repository": {
         "type": "GitHub",
         "owner": "nixos",
         "repo": "flake-compat"
       },
-      "pre_releases": false,
-      "version_upper_bound": null,
-      "release_prefix": null,
+      "branch": "master",
       "submodules": false,
-      "version": "v1.1.0",
-      "revision": "ff81ac966bb2cae68946d5ed5fc4994f96d0ffec",
-      "url": "https://api.github.com/repos/nixos/flake-compat/tarball/v1.1.0",
-      "hash": "19d2z6xsvpxm184m41qrpi1bplilwipgnzv9jy17fgw421785q1m"
+      "revision": "f275e157c50c3a9a682b4c9b4aa4db7a4cd3b5f2",
+      "url": "https://github.com/nixos/flake-compat/archive/f275e157c50c3a9a682b4c9b4aa4db7a4cd3b5f2.tar.gz",
+      "hash": "1pn3q26c8i6p7ry1w9qf091h5zhmdms04ld9bbq73gba6gznppa0"
     },
     "indentmini-nvim": {
       "type": "Git",
@@ -38,9 +35,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "43b5a817712b35e2e412f5c53b1cd56800d7aa91",
-      "url": "https://github.com/nicolasgb/jj.nvim/archive/43b5a817712b35e2e412f5c53b1cd56800d7aa91.tar.gz",
-      "hash": "0lmz3yzhl5j1r7r1pmym38zl2r1sfqc0zzsddagqb62xpz3yrdpx"
+      "revision": "faf1a9f63c55d1d3649896de0d7cc18e4581d71e",
+      "url": "https://github.com/nicolasgb/jj.nvim/archive/faf1a9f63c55d1d3649896de0d7cc18e4581d71e.tar.gz",
+      "hash": "112vi0vhpiykzs45jvr4v5m4adii0b155a7r22smli6h2g3m441v"
     },
     "statix": {
       "type": "Git",
