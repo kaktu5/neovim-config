@@ -52,9 +52,7 @@ in {
         opts = ''
           ["rust-analyzer"] = {
             procMacro = {
-              ignored = {
-                bevy_ecs_macros = { "Component", "Resource" }
-              },
+              enable = false,
             },
           },
         '';
