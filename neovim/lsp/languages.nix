@@ -47,7 +47,18 @@ in {
     qml.enable = true;
     rust = {
       enable = true;
-      lsp.package = ["rust-analyzer"];
+      lsp = {
+        package = ["rust-analyzer"];
+        opts = ''
+          ["rust-analyzer"] = {
+            procMacro = {
+              ignored = {
+                bevy_ecs_macros = { "Component", "Resource" }
+              },
+            },
+          },
+        '';
+      };
       extensions.crates-nvim.enable = true;
     };
     ts.enable = true;
