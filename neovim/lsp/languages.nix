@@ -49,6 +49,7 @@ in {
       enable = true;
       lsp = {
         package = ["rust-analyzer"];
+        /*
         opts = ''
           ["rust-analyzer"] = {
             procMacro = {
@@ -56,6 +57,7 @@ in {
             },
           },
         '';
+        */
       };
       extensions.crates-nvim.enable = true;
     };
